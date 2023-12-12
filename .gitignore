@@ -1,0 +1,11 @@
+config/.composer
+config/.vscode-server
+config/.config
+config/packages
+.bash_history
+.viminfo
+config/composer.lock
+build
+docker-compose-variables.env
+container_database
+vendor

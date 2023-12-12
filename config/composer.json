@@ -1,0 +1,48 @@
+{
+    "name": "digihum/mapping-women-suffrage",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://digihum.github.io/omeka-packages/"
+        },
+        {
+            "url": "https://actechlab.warwick.ac.uk/digital-humanities/omeka-theme-mapsuff.git",
+            "type": "git"
+        }
+    ],
+    "require": {
+        "composer/installers": "^2",
+        "neclimdul/composer-installers-extender": "^2.0",
+        "omeka/omeka": "2.6.1",
+        "omeka/itemrelations": "2.1",
+        "daniel-km/stats": "2.2.4.2",
+        "digihum/mapping-womens-suffrage": "master@dev",
+        "bgsu-lits/ldap": "0.4.0",
+        "performantsoftware/neatline": "2.5.1",
+        "scholarslab/neatlinefeatures": "2.0.5",
+        "cweagans/composer-patches": "^1.7"
+    },
+    "extra": {
+        "installer-types": ["omeka-plugin", "omeka-theme","library"],
+        "installer-paths": {
+            "/var/www/html/": ["omeka/omeka"],
+            "/var/www/html/plugins/{$name}/": ["type:omeka-plugin"],
+            "/var/www/html/themes/{$name}/": ["type:omeka-theme"]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "neclimdul/composer-installers-extender": true,
+            "php-http/discovery": true,
+            "cweagans/composer-patches": false
+        },
+        "php-http/discovery": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "process-timeout": 1200,
+        "vendor-dir": "/var/www/vendor"
+    }
+}

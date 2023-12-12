@@ -1,0 +1,36 @@
+FROM php:7.2-apache
+
+RUN a2enmod rewrite
+
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get -qq update && apt-get -qq -y --no-install-recommends install \
+    curl \
+    unzip \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libmcrypt-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libmemcached-dev \
+    zlib1g-dev \
+    imagemagick \
+    libldap2-dev \
+    lsb-release \
+    git
+
+# Install Composer
+# https://stackoverflow.com/a/58694421/12919871 @ybenhssaien CC-BY-SA
+
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer 
+
+# install the PHP extensions we need
+# replaced mcrypt with sodium as mcrypt is depricated, see 
+#  https://www.php.net/manual/en/intro.mcrypt.php
+RUN docker-php-ext-install -j$(nproc) iconv \
+    pdo pdo_mysql mysqli gd
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+
+
+RUN a2enmod rewrite && service apache2 restart
+
+CMD ["apache2-foreground"]
