@@ -1,0 +1,9 @@
+RewriteEngine On
+
+
+RewriteCond %{QUERY_STRING} ^item=(\d+)$
+RewriteRule ^api/files/$ /api/files/%1 [R=302,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ $1.html [L]
