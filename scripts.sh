@@ -49,10 +49,18 @@ Help()
    echo
 }
 
-while getopts 'hb' flag; do
+getVersion(){
+    url="https://github.com/digihum/omeka-project-scripts/archive/refs/tags/v${VERSION}.zip"
+    message="Downloaded specific scripts version v${VERSION}"
+}
+
+url="https://github.com/digihum/omeka-project-scripts/releases/latest/download/latest.zip"
+    message="Downloaded latest scripts version"
+
+while getopts 'hvb' flag; do
   case "${flag}" in
     h) Help ;;
-    v) GetVersion ;;
+    v) getVersion ;;
     *) error "Unexpected option ${flag}" ;;
   esac
 done
@@ -61,12 +69,6 @@ done
 
 CheckRequirements
 
-url="https://github.com/digihum/omeka-project-scripts/archive/refs/tags/v0.1.zip"
-    message="Downloaded latest scripts version"
-getVersion(){
-    url="https://github.com/digihum/omeka-project-scripts/archive/refs/tags/v${VERSION}.zip"
-    message="Downloaded specific scripts version v${VERSION}"
-}
 
 rm -r scripts
 wget $url -O scripts.zip
