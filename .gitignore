@@ -6,6 +6,7 @@ config/packages
 .viminfo
 config/composer.lock
 build
+!build/static
 docker-compose-variables.env
 container_database
 vendor
