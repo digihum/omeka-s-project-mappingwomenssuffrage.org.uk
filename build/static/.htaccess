@@ -1,9 +1,12 @@
 RewriteEngine On
 
+# a rewrite rule that changes /api/files/?item=234 into /api/files/234
 
 RewriteCond %{QUERY_STRING} ^item=(\d+)$
-RewriteRule ^api/files/$ /api/files/%1 [R=302,L]
+RewriteRule ^api/files/$ /api/items/%1? [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/api/files
+RewriteCond %{REQUEST_URI} !^/api/items
 RewriteRule ^(.*)$ $1.html [L]
