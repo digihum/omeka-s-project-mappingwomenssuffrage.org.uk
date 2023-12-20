@@ -37,4 +37,9 @@ services:
         "-c",
         "chmod -R 777 /var/www/html/&& cd /var/www && scripts/build-and-deploy.sh -b test && apache2-foreground"
       ]
-
+  static:
+    image: httpd
+    volumes:
+      - ./build/static:/usr/local/apache2/htdocs:rw
+    ports:
+      - "3000:80"
