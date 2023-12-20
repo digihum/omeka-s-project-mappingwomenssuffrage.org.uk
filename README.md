@@ -1,12 +1,16 @@
-# Omeka Classic - Platform
+# Omeka Project Mapping Womens Suffrage
 
-This repository is a template for Omeka Classic projects forked from the version created for Omeka S by James Tripp. Here you will find files enabling you to run a local instance and files used in our CI/CD pipelines to build automatically build a remote installation.
+This repository holds the project files for the map.mappingwomenssuffrage.org.uk omeka system.
 
-## Project Details
+## Run in Codespaces
 
-RSE: [RSE NAME]
-Project contact: [CONTACT NAME] 
-Teams File Location: [Add link here] 
+1. Create a codespace on the `main` branch
+2. Upload a copy of the database as a mysqldump sql file to `/db/`
+3. Copy `docker-compose-variables.env.template` to `docker-compose-variables.env`. It's recommended to leave these values but if there is a need to access any repository hosted on a private gitlab instance, a [GitLab deploy key](https://docs.gitlab.com/ee/user/project/deploy_keys/) must be generated.
+4. Run scripts.sh, which will need to be made executable using `chmod +x scripts.sh` followed by `./scripts.sh`. This will download the latest version of a series of scripts under a `scripts folder`. These are automation scripts used to build the application on Codespaces.
+5. Install the Docker extension in this codespace.
+6. Run `docker-compose up` (or right-click on `docker-compose.yml` and select the appropriate option).
+
 
 ## Local Development
 
