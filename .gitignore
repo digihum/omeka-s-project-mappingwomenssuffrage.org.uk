@@ -9,3 +9,5 @@ build
 docker-compose-variables.env
 container_database
 vendor
+scripts
+db
