@@ -39,6 +39,12 @@ jobs:
           find: alnob.lnx.warwick.ac.uk
           replace: ${{github.repository_owner}}.github.io/${{github.event.repository.name}}
           regex: false
+      - name: find and replace 
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "/api/files?item="
+          replace: "/api/files/"
+          regex: false
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
