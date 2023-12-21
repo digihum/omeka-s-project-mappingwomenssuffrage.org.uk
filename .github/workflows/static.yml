@@ -33,9 +33,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: static
-      - name: sed
-        run: | 
-          sed -i "s/alnob.lnx.warwick.ac.uk/${{github.repository_owner}}.github.io\/${{github.event.repository.name}}/g" ./themes/omeka-theme-mapsuff/neatline/javascripts/dist/production/neatline-publice6f1.js
+      - name: find and replace 
+        uses: jacobtomlinson/gha-find-replace@v3
+        with: 
+          find: alnob.lnx.warwick.ac.uk
+          replace: ${{github.repository_owner}}.github.io/${{github.event.repository.name}}
+          regex: false
+          include: themes/omeka-theme-mapsuff/neatline
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
