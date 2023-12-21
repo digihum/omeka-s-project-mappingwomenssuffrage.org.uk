@@ -34,9 +34,8 @@ jobs:
         with:
           ref: static
       - name: sed
-        uses: lefherz/action-sed@master
-        with: 
-          args: sed -i "s/alnob.lnx.warwick.ac.uk/${{github.repository_owner}}.github.io\/${{github.event.repository.name}}/g" ./themes/omeka-theme-mapsuff/neatline/javascripts/dist/production/neatline-publice6f1.js
+        run: | 
+          sed -i "s/alnob.lnx.warwick.ac.uk/${{github.repository_owner}}.github.io\/${{github.event.repository.name}}/g" ./themes/omeka-theme-mapsuff/neatline/javascripts/dist/production/neatline-publice6f1.js
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
