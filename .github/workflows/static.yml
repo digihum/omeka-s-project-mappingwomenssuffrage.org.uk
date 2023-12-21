@@ -39,7 +39,6 @@ jobs:
           find: alnob.lnx.warwick.ac.uk
           replace: ${{github.repository_owner}}.github.io/${{github.event.repository.name}}
           regex: false
-          include: themes/omeka-theme-mapsuff/neatline
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
